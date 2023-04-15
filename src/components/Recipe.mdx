@@ -1,0 +1,15 @@
+---
+layout: ../layouts/Layout.astro
+props: Astro.props
+---
+
+# {props.title}
+
+**Author:** {props.author}
+**Prep Time:** {props.prep_time}
+
+## Ingredients
+{props.ingredients.map(ingredient => `- ${ingredient.quantity} ${ingredient.name}${ingredient.note ? `, ${ingredient.note}` : ''}`).join('\n')}
+
+## Instructions
+{props.instructions.map(instruction => `${instruction.step}. ${instruction.text}`).join('\n\n')}

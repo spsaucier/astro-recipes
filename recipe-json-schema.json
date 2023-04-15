@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Recipe",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The title of the recipe."
+    },
+    "slug": {
+      "type": "string",
+      "description": "A URL-friendly version of the title"
+    },
+    "description": {
+      "type": "string",
+      "description": "A brief description of the recipe."
+    },
+    "yield": {
+      "type": "string",
+      "description": "The number of servings or quantity the recipe makes."
+    },
+    "prepTime": {
+      "type": "string",
+      "description": "The time it takes to prepare the recipe, in ISO 8601 duration format (e.g. 'PT30M' for 30 minutes)."
+    },
+    "cookTime": {
+      "type": "string",
+      "description": "The time it takes to cook the recipe, in ISO 8601 duration format (e.g. 'PT45M' for 45 minutes)."
+    },
+    "ingredients": {
+      "type": "array",
+      "description": "A list of ingredients required for the recipe.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the ingredient."
+          },
+          "quantity": {
+            "type": "string",
+            "description": "The quantity or amount of the ingredient."
+          },
+          "unit": {
+            "type": "string",
+            "description": "The unit of measurement for the ingredient (e.g. 'cup', 'teaspoon', 'gram')."
+          },
+          "preparation": {
+            "type": "string",
+            "description": "Any preparation needed for the ingredient (e.g. 'chopped', 'minced', 'melted')."
+          }
+        },
+        "required": ["name", "quantity"]
+      }
+    },
+    "instructions": {
+      "type": "array",
+      "description": "A list of step-by-step instructions for preparing the recipe.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "description": "Optional additional notes or tips related to the recipe.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "A list of tags or categories related to the recipe (e.g. 'vegan', 'gluten-free', 'dessert').",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source": {
+      "type": "string",
+      "description": "The source or origin of the recipe, such as a website or cookbook."
+    }
+  },
+  "required": ["title", "ingredients", "instructions"]
+}

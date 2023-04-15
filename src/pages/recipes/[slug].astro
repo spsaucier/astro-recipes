@@ -1,0 +1,19 @@
+---
+import recipes from '../../../recipes-json';
+import Recipe from '../../components/Recipe.mdx';
+
+export function getStaticPaths() {
+  return recipes.map(r => (
+    {params: {slug: r.slug}}
+  ));
+}
+
+const slug = Astro.params.slug;
+const recipe = recipes.find(r => r.slug === slug);
+
+if (!recipe) {
+  throw new Error(`Recipe not found for slug "${slug}"`);
+}
+---
+
+<Recipe {...recipe} />
